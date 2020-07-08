@@ -5,7 +5,8 @@ nav.addEventListener('click', function(event){
 })
 
 const pics = document.querySelectorAll('img');
- 
+ const lastPic = document.querySelector('img:nth-child(3)')
+ console.log(lastPic);
 
 document.querySelectorAll('img').forEach(item => {
     item.addEventListener('mouseover', event => {
@@ -40,12 +41,29 @@ document.addEventListener('wheel', event => {
 const firstTitle = document.querySelector('h1')
 firstTitle.addEventListener('mouseover', event =>{
     firstTitle.setAttribute('id', 'draggable');
+    firstTitle.setAttribute('draggable', 'true');
     // debugger
 })
 firstTitle.addEventListener('drag', event =>{
-    firstTitle.textContent = 'Secret Text';
+    event.preventDefault();
+    firstTitle.innerHTML = 'Secret Text';
 }, false)
-document.addEventListener("drop", function( event ) {
-   debugger
 
-}, false);
+document.addEventListener('dragend', event => {
+    firstTitle.innerHTML = 'Fun Bus';
+}, false)
+
+document.addEventListener('copy', event =>{
+    event.target.style.color = 'red';
+},)
+
+lastPic.addEventListener('dblclick', event =>{
+    event.target.style.transform = ('scale(2)');
+    event.target.style.transition = ('transform .6s')
+    
+    setTimeout(function(){
+        event.target.style.transform = ('scale(1)');
+    },2000)
+})
+
+
