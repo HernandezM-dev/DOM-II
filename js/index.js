@@ -4,9 +4,9 @@ nav.addEventListener('click', function(event){
     event.preventDefault()
 })
 
+const allP = document.querySelectorAll('p')
 const pics = document.querySelectorAll('img');
- const lastPic = document.querySelector('img:nth-child(3)')
- console.log(lastPic);
+const lastPic = document.querySelector('img:nth-child(3)')
 
 document.querySelectorAll('img').forEach(item => {
     item.addEventListener('mouseover', event => {
@@ -66,4 +66,23 @@ lastPic.addEventListener('dblclick', event =>{
     },2000)
 })
 
+document.querySelectorAll('p').forEach(item =>{
+    item.addEventListener('mouseup', event =>{
+        t = (document.all) ? document.selection.createRange().text : document.getSelection();
+        
+        // debugger
+        // const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
+        // console.log(selection);
+    })
+})
 
+
+// var t = '';
+// function gText(e) {
+//     t = (document.all) ? document.selection.createRange().text : document.getSelection();
+
+//     document.getElementById('input').value = t;
+// }
+
+// document.onmouseup = gText;
+// if (!document.all) document.captureEvents(Event.MOUSEUP);
